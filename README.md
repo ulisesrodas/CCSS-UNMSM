@@ -1,5 +1,10 @@
-# Encuesta de satisfacción a estudiantes de CCSS UNMSM
-Este repositorio presenta un ecosistema completo de Ciencia de Datos aplicada a la Gestión Universitaria. El proyecto automatiza el procesamiento de encuestas de satisfacción a estudiantes de la Facultad de Ciencias Sociales, transformando datos crudos en un Informe Dinámico (Quarto) y un Dashboard Interactivo (Power BI) en torno a tres temáticas:
+# Encuesta de satisfacción a estudiantes
+Este repositorio presenta un ecosistema completo de Ciencia de Datos aplicada a la gestión universitaria. El proyecto automatiza el procesamiento de encuestas de satisfacción a estudiantes de una facultad de la UNMSM, transformando datos crudos en un informe dinámico (Quarto) y un dashboard interactivo (Power BI) en torno a, principalmente, a la satisfacción o no de tres temáticas:
+* Plan de estudios.
+* Infraestructura.
+* Oportunidades laborales.
+
+La base de datos cruda es el archivo `CONOCIMIENTOS.xslx` está anonimizada, pero ello no quita fuerza al análisis ni las conclusiones. Para que corra el script, el archivo Excel debe estar en la misma carpeta local.
 
 ## 📈 Hallazgos Clave del Análisis:
 El informe revela dimensiones críticas que requieren atención inmediata:
