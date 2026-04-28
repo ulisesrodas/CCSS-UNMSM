@@ -1,10 +1,8 @@
 # Encuesta de satisfacción a estudiantes
-Este repositorio presenta un ecosistema completo de Ciencia de Datos aplicada a la gestión universitaria. El proyecto automatiza el procesamiento de encuestas de satisfacción a estudiantes de una facultad de la UNMSM, transformando datos crudos en un informe dinámico (Quarto) y un dashboard interactivo (Power BI) en torno a, principalmente, a la satisfacción o no de tres temáticas:
-* Plan de estudios.
-* Infraestructura.
-* Oportunidades laborales.
-
-La base de datos cruda es el archivo `CONOCIMIENTOS.xslx`. Está anonimizada, pero ello no quita fuerza al análisis ni las conclusiones. Para que corra el archivo `SCRIPT.R`, el Excel debe estar en la misma carpeta local.
+Este repositorio presenta un ecosistema completo de Ciencia de Datos aplicada a la gestión universitaria. El proyecto automatiza la limpieza, informe y visualización de encuestas en torno a la satisfacción de la enseñanza recibida en el pregrado. Sus resultados se dividen en tres bloques:
+* **Perfil del estudiante:** Se presentan las características inherentes a los integrantes de la facultad, como son Sexo, Nivel curricular cursado y Carrera elegida.
+* **Satisfacción del estudiante:** Valoración de los servicios de la facultad (Plan de estudios, Infraestrucutra y Oportunidades laborales)
+* **¿Por qué hay insatisfacción con los servicios?:** Se presenta como complemento a lo anterior. Aquí veremos las respuestas más frecuentes de por qué no están satisfechos los estudiantes con los servicios ofrecidos. Desde luego, esta insatisfacción tiene un sesgo negativo dado que solo analiza a los insatisfechos, pero da un excelente feedback a la facultad para saber áreas de mejoría.
 
 ## 📈 Hallazgos Clave del Análisis:
 El informe revela dimensiones críticas que requieren atención inmediata:
@@ -14,7 +12,7 @@ El informe revela dimensiones críticas que requieren atención inmediata:
 * **Desafío Laboral:** Incertidumbre en empleabilidad (37.4% de insatisfacción), donde los estudiantes demandan mejores puentes con el mercado laboral y la red de egresados.
 
 ## 🚀 Flujo de trabajo integrado
-El proyecto no solo limpia datos, sino que genera productos de valor para la toma de decisiones:
+El proyecto no solo limpia datos, sino que genera productos de valor para la toma de decisiones. Para ejecutar el proyecto, el archivo `CONOCIMIENTOS.xslx` debe estar en la carpeta local de trabajo.
 * Motor de Procesamiento (R): Limpieza lógica, consolidación de bases (Left Joins) y cálculo de parámetros muestrales ($n=270$ con 95% de confianza).
 * Informe Automatizado (INFORME.qmd): Generación de un reporte con estética profesional utilizando Quarto, que incluye visualizaciones de perfil demográfico y análisis de percepción.
 * Visualización (AVANCE.pbix): Modelado de datos para exploración interactiva en Power BI. **[VER DASHBOARD]]**
