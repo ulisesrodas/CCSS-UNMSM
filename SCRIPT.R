@@ -5,7 +5,10 @@
 # DESCRIPCIÓN GENERAL:
 # Este script procesa los resultados de la encuesta de satisfacción estudiantil anonimizados de la facultad de Ciencias Sociales UNMSM
 # Toma los datos crudos (universo, recolectados y recuperados), los consolida, depura inconsistencias y genera los insumos gráficos/tabulares
-# Insumos que serán usados en el reporte final en Quarto y el dashboard en Power BI
+# Las tablas insumos que serán usados en el reporte final en Quarto y el dashboard en Power BI son:
+## df_limpia
+## tabla_perfil
+## Satisfaccion_Estudiante
 
 # ESTRUCTURA DEL CÓDIGO (ÍNDICE):
 # PASOS PREVIOS: Carga de librerías y lectura de bases de datos desde Excel.
@@ -15,7 +18,7 @@
 
 # NOTAS TÉCNICAS:
 # Asegurarse de tener el archivo "CONOCIMIENTOS.xlsx" en la carpeta raíz de este proyecto.
-# Las salidas (imágenes y Excels) se guardarán automáticamente en el mismo directorio.
+# Las salidas (imágenes y Excels) no se guardarán automáticamente en el mismo directorio. Es 
 
 #-----------------------------------------------------------------------------------------------------#
 ########################################## PASOS PREVIOS ##############################################
@@ -251,15 +254,14 @@ df_limpia <- df_final |>
       TRUE ~ motivo_laboral
     )
   )
+write_xlsx(df_limpia, "df_limpia.xlsx") # LO USAREMOS EN EL INFORME QUARTO
 
 # Vemos la cantidad de inconsistencias corregidas
 inconsistencias <- df_final |>
   filter(sat_plan >= 4 & !is.na(motivo_plan)) |>
   nrow()
 
-print(paste("Casos corregidos:", inconsistencias))
-
-# Ningún caso corregido
+print(paste("Casos corregidos:", inconsistencias)) # Ningún caso corregido
 
 # Limpiamos el entorno
 # Borrar tabla (dataframe) usado hasta ahora. Nos quedamos con el limpio
@@ -441,7 +443,7 @@ lista_tablas <- list(
 )
 
 # Guardamos la lista en un solo archivo
-write_xlsx(lista_tablas, "Satisfaccion_Estudiante.xlsx")
+write_xlsx(lista_tablas, "Satisfaccion_Estudiante.xlsx") # LO USAREMOS EN QUARTO
 
 # No eliminamos las tablas de satisfacción para su visualización
 # rm(lista_tablas)
@@ -535,9 +537,9 @@ print(g_sat_infra)
 print(g_sat_laboral)
 
 # Guardar acativado: La satisfacción me parece más interesante
-ggsave("Grafico_Sat_Plan.png", g_sat_plan, width = 7, height = 5)
-ggsave("Grafico_Sat_Infra.png", g_sat_infra, width = 7, height = 5)
-ggsave("Grafico_Sat_Laboral.png", g_sat_laboral, width = 7, height = 5)
+# ggsave("Grafico_Sat_Plan.png", g_sat_plan, width = 7, height = 5)
+# ggsave("Grafico_Sat_Infra.png", g_sat_infra, width = 7, height = 5)
+# ggsave("Grafico_Sat_Laboral.png", g_sat_laboral, width = 7, height = 5)
 
 # Eliminamos
 rm(g_sat_plan, g_sat_infra, g_sat_laboral)
@@ -548,7 +550,7 @@ rm(g_sat_plan, g_sat_infra, g_sat_laboral)
 # La tabla a usar será df_limpia que ya contiene todas las variables
 # Nos interesan las variables motivo: ¿Por qué no estás satisfecho con...?
 
-# FUNCIÓN MAESTRA PARA ANALIZAR MOTIVOS: VERSIÓN LOLLIPOP)
+# FUNCIÓN MAESTRA PARA ANALIZAR MOTIVOS: VERSIÓN LOLLIPOP
 graficar_motivos <- function(data, columna, titulo, color_barra) {
   # A. Preparar la tabla de frecuencias
   data_motivos <- data |>
@@ -642,10 +644,10 @@ print(g_motivo_plan)
 print(g_motivo_infra)
 print(g_motivo_laboral)
 
-# Guardar acativado
-ggsave("Motivo_Plan.png", plot = g_motivo_plan, width = 8, height = 5)
-ggsave("Motivo_Infra.png", plot = g_motivo_infra, width = 8, height = 5)
-ggsave("Motivo_Laboral.png", plot = g_motivo_laboral, width = 8, height = 5)
+# Guardamos
+# ggsave("Motivo_Plan.png", plot = g_motivo_plan, width = 8, height = 5)
+# ggsave("Motivo_Infra.png", plot = g_motivo_infra, width = 8, height = 5)
+# ggsave("Motivo_Laboral.png", plot = g_motivo_laboral, width = 8, height = 5)
 
 # Dejo a motivo_plan como tabla de referencia de los gráficos más interesantes
 rm(
@@ -660,5 +662,7 @@ rm(
 )
 
 #-------------------------------------------------------------------------------------------#
-############ df_limpia Y df_recolectada SE USARÁN COMO INSUMO EN QUARTO Y POWER BI ##########
+################################### FIN DEL CÓDIGO ##########################################
 #-------------------------------------------------------------------------------------------#
+
+# Siguiente paso: ir al archivo qmd: INFORME.qmd
